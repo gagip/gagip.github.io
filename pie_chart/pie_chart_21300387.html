@@ -7,7 +7,7 @@
 
     <script type="text/javascript">
       google.charts.load('current', {
-        packages: ['corechart', 'line']
+        packages: ['corechart']
       });
       google.charts.setOnLoadCallback(readFile); // (1) when the javascript is read, readFile function is launched first.
 
@@ -30,12 +30,11 @@
         var data2 = new google.visualization.arrayToDataTable(arrayData);
 
         var options2 = {
-          title: 'birth rate of country A and B',
-          is3D: true,
+          title: 'birth rate of country A and B'
         };
         //var chart1 = new google.visualization.LineChart(document.getElementById('chart_div1'));
         //chart1.draw(data1, options1);
-        var chart2 = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var chart2 = new google.visualization.PieChart(document.getElementById('piechart'));
         chart2.draw(data2, options2);
       }
     </script>
