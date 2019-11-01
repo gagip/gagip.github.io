@@ -30,18 +30,19 @@
         var data2 = new google.visualization.arrayToDataTable(arrayData);
 
         var options2 = {
-          title: 'birth rate of country A and B'
+          title: 'birth rate of country A and B',
+          is3D: true,
         };
         //var chart1 = new google.visualization.LineChart(document.getElementById('chart_div1'));
         //chart1.draw(data1, options1);
-        var chart2 = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart2 = new google.visualization.PieChart(document.getElementById('piechart_3d'));
         chart2.draw(data2, options2);
       }
     </script>
   </head>
   <body>
     <div id="introduction" style="max-width: 800px; font-family: Verdana, Dotum; margin: auto; padding-bottom: 30px">
-      <h1>jquery-csv example</h1>
+      <h1>dd</h1>
     </div>
     <div id="chart_div2" style="max-width: 1200px; margin: auto; width: 1200px; height: 500px;"></div>
     <div style="max-width: 800px; margin: auto; margin-top: 50px; width: 800px">
