@@ -1,23 +1,16 @@
 <html>
 <head>
-	<!--Load the AJAX API-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 	<script type="text/javascript">
-		// Load the Visualization API and the corechart package.
 		google.charts.load('current', {packages: ['corechart', 'bar']});
-		// Set a callback to run when the Google Visualization API is loaded.
 		google.charts.setOnLoadCallback(drawBasic);
-		// Callback that creates and populates a data table,
-		// instantiates the pie chart, passes in the data and
-		// draws it.
-    function drawChart() {
 
-      // grab the CSV
-   $.get("steam.csv", function(csvString) {
+    function drawChart() {
+	    // 데이터 setting
+	    // grab the CSV
+	    $.get("steam.csv", function(csvString) {
       // transform the CSV string into a 2-dimensional array
       var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-
       // this new DataTable object holds all the data
       var data = new google.visualization.arrayToDataTable(arrayData);
 
@@ -26,14 +19,17 @@
       view.setColumns([0,1]);
 
 
+				// 옵션 setting
         var options = {
-          title: 'My Daily Activities'
+          title: 'My Daily Activities',
+					titleTextStyle{color: 'black'}
         };
 
+				// 차트 그리기
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
         chart.draw(data, options);
       }
+			});
     </script>
   </head>
   <body>
