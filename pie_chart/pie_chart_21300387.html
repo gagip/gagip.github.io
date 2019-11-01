@@ -30,7 +30,14 @@
         var data2 = new google.visualization.arrayToDataTable(arrayData);
 
         var options2 = {
-          title: 'birth rate of country A and B'
+          title: 'test',
+          is3D: true,
+          slices: [ {color: 'black'},
+                    {},
+                    {color: 'red'},]
+          slices: { 1: {offset: 0.2},
+                    4: {offset: 0.4},
+          },
         };
         //var chart1 = new google.visualization.LineChart(document.getElementById('chart_div1'));
         //chart1.draw(data1, options1);
