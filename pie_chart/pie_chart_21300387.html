@@ -30,14 +30,19 @@
         var data2 = new google.visualization.arrayToDataTable(arrayData);
 
         var options2 = {
-          title: 'test',
-          is3D: true,
-          slices: [ {color: 'black'},
-                    {},
-                    {color: 'red'},],
-          slices: { 1: {offset: 0.2},
+          title: 'Pie Graph of Steam Game Releases',
+          subtitle: 'Top 6 developers on releases on Steam'
+          is3D: true,  // 3d
+          slices: {
+            0: { color: 'yellow'},
+            1: { color: 'blue' },
+            2: { color: 'brown' },
+            3: { color: 'green'}
+          }
+          slices: { 1: {offset: 0.2}, // 조각
                     4: {offset: 0.4},
           },
+
         };
         //var chart1 = new google.visualization.LineChart(document.getElementById('chart_div1'));
         //chart1.draw(data1, options1);
@@ -49,12 +54,14 @@
   <body>
     <div id="introduction" style="max-width: 800px; font-family: Verdana, Dotum; margin: auto; padding-bottom: 30px">
       <h1>HW3 - Pie Chart</h1>
-      <p>date: 2019-11-1</p>
+      <p>date: 2019-11-01</p>
       <p>name: Son Chanwoo (21300387)</p>
-      <p>Introduction: This chart is a line graph of game company trends. This chart shows that Blizzard is more searched in South Korea than the other two companies.</p>
-      <p>Data: I gathered this data to check which company is popular, becouse I'm looking for a job about game. <br>
-        Scoure link of Data: https://trends.google.co.kr/trends/explore?date=2019-05-01%202019-10-02&geo=KR&q=%2Fm%2F01jx9,%2Fm%2F07kdf9w,%2Fg%2F1216lng6 </p>
-      <p>Source code of this page: https://github.com/gagip/Data_Visualization_2019/blob/master/line_chart_%EC%86%90%EC%B0%AC%EC%9A%B0.html<p>
+      <p>Introduction: This chart shows the rate of game releases about the six developers who released the most games on Steam.</p>
+      <p>Data: From Steam, World's largest gaming platform for PC, & SteamSpy API, a site that aggregates Steam game sales <br>
+        This dataset provides information about various aspects of games on the store, such as its genre and the estimated number of owners <br>
+        About 27,000 game data released before May 2019 <br>
+        Scoure link of Data: https://www.kaggle.com/nikdavis/steam-store-games </p>
+      <p>Source code of this page: https://github.com/gagip/gagip.github.io/blob/master/pie_chart/pie_chart_21300387.html <p>
     </div>
 
     <div id="piechart" style="max-width: 1200px; margin: auto; width: 1200px; height: 500px;"></div>
