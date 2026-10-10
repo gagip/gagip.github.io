@@ -1,6 +1,6 @@
-# Game Math Lab (블로그)
+# gagip (개인 사이트)
 
-게임에서 마주친 질문을 수학과 시뮬레이션으로 풀어보는 연구노트. Astro 7 + MDX + KaTeX + Shiki.
+앱과 게임을 설계 관점에서 분석하고 기록하는 개인 사이트. Astro 7 + MDX + KaTeX + Shiki.
 이름과 소개는 `src/lib/site.ts`에서 바꾼다.
 
 ## 시작

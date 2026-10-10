@@ -1,13 +1,13 @@
 // 블로그 이름·소개는 여기서 바꾼다.
 export const SITE = {
-  title: 'Game Math Lab',
-  description: '게임에서 마주친 질문을 수학과 시뮬레이션으로 풀어보는 연구노트',
+  title: 'gagip',
+  description: '앱과 게임을 설계 관점에서 분석하고 기록합니다.',
 };
 
 export const sections = [
-  { key: 'experiments', label: 'Experiments', desc: '게임에서 생긴 질문을 모델링하고 시뮬레이션으로 확인한 실험 노트' },
-  { key: 'analysis', label: 'Analysis', desc: '앱·게임·웹 서비스를 관점을 정해 분석한 글' },
-  { key: 'notes', label: 'Notes', desc: '짧은 메모와 회고' },
+  { key: 'analysis', label: 'Analysis', desc: '앱·게임·웹 서비스를 설계 관점에서 분석한 글' },
+  { key: 'experiments', label: 'Experiments', desc: '궁금한 질문을 모델링하고 시뮬레이션으로 확인한 실험 노트' },
+  { key: 'notes', label: 'Notes', desc: '짧은 메모와 프로그래밍 기록' },
 ] as const;
 
 export type SectionKey = (typeof sections)[number]['key'];
