@@ -2,7 +2,7 @@
 :root {
   --bg: #fbfaf7;
   --fg: #1f1d1a;
-  --muted: #6b665e;
+  --muted: #5a554d;
   --line: #e4dfd6;
   --card: #f4f1ea;
   --accent: #8a3b12;
@@ -21,8 +21,8 @@
   :root {
     --bg: #17161a;
     --fg: #e9e6df;
-    --muted: #a29d93;
-    --line: #34313a;
+    --muted: #bdb8ae;
+    --line: #3a3741;
     --card: #211f25;
     --accent: #e0a074;
 
@@ -67,18 +67,18 @@ h1, h2, h3, h4 { line-height: 1.35; letter-spacing: -.01em; }
 .section-links { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .6rem; }
 .section-links a { display: flex; flex-direction: column; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--card); text-decoration: none; color: var(--fg); font-family: var(--font-ui); }
 .section-links a:hover { border-color: var(--accent); }
-.section-links span { color: var(--muted); font-size: .88rem; }
-.section-title { font: 600 .85rem var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 2rem 0 .8rem; }
+.section-links span { color: var(--muted); font-size: .95rem; }
+.section-title { font: 600 .9rem var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 2rem 0 .8rem; }
 
 .card { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
 .card h3 { margin: .3rem 0 .2rem; font-size: 1.2rem; }
 .card h3 a { color: var(--fg); text-decoration: none; }
 .card h3 a:hover { color: var(--accent); }
 .card p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.65; }
-.card-meta, .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .8rem; font: .82rem var(--font-ui); color: var(--muted); }
+.card-meta, .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .8rem; font: .88rem var(--font-ui); color: var(--muted); }
 .card-section { font-weight: 600; color: var(--accent); }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: .6rem 0 0; font-family: var(--font-ui); }
-.tags li { font-size: .78rem; padding: .1rem .55rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+.tags li { font-size: .84rem; padding: .1rem .55rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
 
 /* ── 글 ─────────────────────────────────────────── */
 .post-header { padding: 2.5rem 0 1.2rem; border-bottom: 1px solid var(--line); margin-bottom: 1.5rem; }
@@ -101,9 +101,10 @@ h1, h2, h3, h4 { line-height: 1.35; letter-spacing: -.01em; }
 
 /* 코드 (Shiki 이중 테마) */
 .astro-code { padding: 1rem; border-radius: 8px; overflow-x: auto; font: .88rem/1.6 var(--font-mono); border: 1px solid var(--line); }
-.astro-code, .astro-code span { color: var(--shiki-light); background-color: var(--shiki-light-bg); }
+/* Shiki가 <pre>와 span에 라이트 색을 인라인으로 넣으므로, 다크 모드는 !important로 덮는다. */
 @media (prefers-color-scheme: dark) {
-  .astro-code, .astro-code span { color: var(--shiki-dark); background-color: var(--shiki-dark-bg); }
+  .astro-code { background-color: var(--shiki-dark-bg) !important; }
+  .astro-code, .astro-code span { color: var(--shiki-dark) !important; }
 }
 
 /* 수식 */
