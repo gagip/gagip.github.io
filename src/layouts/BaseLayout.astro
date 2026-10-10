@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+import { SITE, sections, url } from '../lib/site';
+interface Props { title?: string; description?: string }
+const { title, description = SITE.description } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href={url('/')}>{SITE.title}</a>
+        <nav>
+          {sections.map((s) => <a href={url(`/${s.key}/`)}>{s.label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">{SITE.title}</div>
+    </footer>
+  </body>
+</html>

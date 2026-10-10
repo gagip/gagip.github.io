@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import { sections, url, fmtDate, type SectionKey } from '../lib/site';
+interface Props { section: SectionKey; data: Record<string, any> }
+const { section, data } = Astro.props;
+const label = sections.find((s) => s.key === section)!.label;
+const targetTypeLabel: Record<string, string> = { app: '앱', game: '게임', web: '웹' };
+---
+<BaseLayout title={data.title} description={data.description}>
+  <article class="post">
+    <header class="post-header">
+      <a class="crumb" href={url(`/${section}/`)}>{label}</a>
+      <h1>{data.title}</h1>
+      <p class="lede">{data.description}</p>
+      <div class="post-meta">
+        <time datetime={data.date.toISOString()}>{fmtDate(data.date)}</time>
+        {data.updated && <span>수정 {fmtDate(data.updated)}</span>}
+        {data.status && <StatusBadge status={data.status} />}
+        {data.target && <span>{data.target} ({targetTypeLabel[data.targetType]})</span>}
+        {data.perspective && <span>관점: {data.perspective}</span>}
+        {data.repo && <a href={data.repo} rel="noopener">원본 코드 ↗</a>}
+        {data.draft && <span class="badge badge-info">draft</span>}
+      </div>
+      {data.tags.length > 0 && <ul class="tags">{data.tags.map((t: string) => <li>{t}</li>)}</ul>}
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import { sections, url, fmtDate, type SectionKey } from '../lib/site';
+import StatusBadge from './StatusBadge.astro';
+interface Props { section: SectionKey; post: any; showSection?: boolean }
+const { section, post, showSection = false } = Astro.props;
+const d = post.data;
+const label = sections.find((s) => s.key === section)!.label;
+const blurb = d.summary ?? d.description;
+---
+<article class="card">
+  <div class="card-meta">
+    {showSection && <span class="card-section">{label}</span>}
+    <time datetime={d.date.toISOString()}>{fmtDate(d.date)}</time>
+    {d.status && <StatusBadge status={d.status} />}
+    {d.draft && <span class="badge badge-info">draft</span>}
+  </div>
+  <h3><a href={url(`/${section}/${post.id}/`)}>{d.title}</a></h3>
+  <p>{blurb}</p>
+  {d.tags.length > 0 && <ul class="tags">{d.tags.map((t: string) => <li>{t}</li>)}</ul>}
+</article>

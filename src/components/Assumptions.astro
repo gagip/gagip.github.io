@@ -1,0 +1,9 @@
+---
+// 문제를 어떤 가정으로 푸는지 적는 박스. 열린 가정도 여기에 둔다.
+interface Props { title?: string }
+const { title = '가정' } = Astro.props;
+---
+<aside class="callout callout-assume">
+  <div class="callout-label">{title}</div>
+  <div class="callout-body"><slot /></div>
+</aside>

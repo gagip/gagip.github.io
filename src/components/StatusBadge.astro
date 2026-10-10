@@ -1,0 +1,6 @@
+---
+interface Props { status: '정의중' | '진행중' | '완료' }
+const { status } = Astro.props;
+const tone = { 정의중: 'info', 진행중: 'warn', 완료: 'ok' }[status];
+---
+<span class={`badge badge-${tone}`}>{status}</span>

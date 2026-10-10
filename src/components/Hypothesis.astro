@@ -1,0 +1,14 @@
+---
+// 가설 → 판정. verdict: 채택 | 기각 | 보류
+interface Props { claim: string; verdict: '채택' | '기각' | '보류' }
+const { claim, verdict } = Astro.props;
+const tone = { 채택: 'ok', 기각: 'no', 보류: 'warn' }[verdict];
+---
+<aside class={`callout callout-hypo callout-hypo-${tone}`}>
+  <div class="hypo-head">
+    <span class="callout-label">가설</span>
+    <span class={`badge badge-${tone}`}>{verdict}</span>
+  </div>
+  <p class="hypo-claim">{claim}</p>
+  <div class="callout-body"><slot /></div>
+</aside>

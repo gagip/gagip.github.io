@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getAllPosts } from '../lib/posts';
+import { SITE, sections, url } from '../lib/site';
+const all = (await getAllPosts()).slice(0, 8);
+---
+<BaseLayout>
+  <section class="hero">
+    <h1>{SITE.title}</h1>
+    <p class="lede">{SITE.description}</p>
+    <ul class="section-links">
+      {sections.map((s) => (
+        <li><a href={url(`/${s.key}/`)}><strong>{s.label}</strong><span>{s.desc}</span></a></li>
+      ))}
+    </ul>
+  </section>
+  <section>
+    <h2 class="section-title">최근 글</h2>
+    {all.length === 0 && <p class="empty">아직 글이 없습니다.</p>}
+    {all.map(({ section, post }) => <PostCard section={section} post={post} showSection />)}
+  </section>
+</BaseLayout>

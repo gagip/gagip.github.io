@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+import { sections } from '../../lib/site';
+
+export function getStaticPaths() {
+  return sections.map((s) => ({ params: { section: s.key }, props: { meta: s } }));
+}
+const { meta } = Astro.props;
+const posts = await getPosts(meta.key);
+---
+<BaseLayout title={meta.label} description={meta.desc}>
+  <section class="hero hero-small">
+    <h1>{meta.label}</h1>
+    <p class="lede">{meta.desc}</p>
+  </section>
+  {posts.length === 0 && <p class="empty">아직 글이 없습니다.</p>}
+  {posts.map((post) => <PostCard section={meta.key} post={post} />)}
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import { render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import ResultSummary from '../../components/ResultSummary.astro';
+import Assumptions from '../../components/Assumptions.astro';
+import Hypothesis from '../../components/Hypothesis.astro';
+import { getPosts } from '../../lib/posts';
+import { sections } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const s of sections) {
+    for (const post of await getPosts(s.key)) {
+      paths.push({ params: { section: s.key, slug: post.id }, props: { post, section: s.key } });
+    }
+  }
+  return paths;
+}
+const { post, section } = Astro.props;
+const { Content } = await render(post);
+---
+<PostLayout section={section} data={post.data}>
+  {/* MDX 글에서 import 없이 바로 쓸 수 있는 전용 블록 */}
+  <Content components={{ ResultSummary, Assumptions, Hypothesis }} />
+</PostLayout>
